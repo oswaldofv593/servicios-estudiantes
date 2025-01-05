@@ -3,70 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios a Estudiantes</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Inicio de Sesión - Plataforma Académica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
 </head>
-<body>
-    <div class="sidebar">
-        <div class="logo">
-            <img src="images/logo.png" alt="Logo">
-            <span>Dashboard</span>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active">Nuevo</a></li>
-                <li><a href="lerner.html">Lerner</a></li>
-                <li><a href="grupos_estudio.html">Grupos de estudio</a></li>
-            </ul>
-        </nav>
-        <div class="recent-files">
-            <h3>Recientes</h3>
-            <ul>
-                <li><a href="#">1. Video_omM3yEKkemM</a></li>
-            </ul>
-        </div>
-        <div class="feedback">
-            <a href="feedback.html">Danos Feedback</a>
-        </div>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Inicio de Sesión</h2>
+        <form id="loginForm">
+            <div class="mb-4">
+                <label for="password" class="block text-gray-700">Contraseña</label>
+                <input type="password" id="password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+            </div>
+            <button type="submit" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg">Iniciar Sesión</button>
+            <p id="errorMessage" class="text-red-500 mt-4 hidden">Contraseña incorrecta. Inténtalo de nuevo.</p>
+        </form>
     </div>
-    <div class="main-content">
-        <div class="header">
-            <h1>Comienza subiendo tus audios o textos</h1>
-            <p>Elige una opción y transformalo en conocimiento</p>
-            <button>Crear Gratis</button>
-        </div>
-        <div class="upload-options">
-            <div class="option">
-                <input type="file" id="audioVideo" accept="audio/*,video/*">
-                <label for="audioVideo">Subir Audio/Video</label>
-            </div>
-            <div class="option">
-                <input type="url" id="youtubeUrl" placeholder="URL de YouTube">
-                <label for="youtubeUrl">Video YouTube</label>
-            </div>
-            <div class="option">
-                <input type="file" id="text" accept=".txt,.doc,.docx">
-                <label for="text">Subir Texto</label>
-            </div>
-            <div class="option">
-                <input type="file" id="manuscript" accept=".pdf">
-                <label for="manuscript">Subir Manuscrito</label>
-            </div>
-        </div>
-        <div class="popular-videos">
-            <h2>Populares</h2>
-            <div class="video-card">
-                <img src="images/popular1.jpg" alt="Popular Video 1">
-                <p>¿Qué tan importante es Excel?</p>
-            </div>
-            <div class="video-card">
-                <img src="images/popular2.jpg" alt="Popular Video 2">
-                <p>The Underdog: From $10/hr to $1.9M/Year</p>
-            </div>
-        </div>
-    </div>
-    <footer>
-        <p>&copy; 2023 Servicios a Estudiantes. Todos los derechos reservados.</p>
-    </footer>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const password = document.getElementById('password').value;
+            // Simulación de verificación de contraseña
+            const storedPassword = '123456'; // Esta debería ser la contraseña almacenada de manera segura
+            if (password === storedPassword) {
+                window.location.href = 'home.html'; // Redirigir al panel de usuario
+            } else {
+                document.getElementById('errorMessage').classList.remove('hidden');
+            }
+        });
+    </script>
 </body>
 </html>
