@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Académica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-white shadow">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="text-xl font-semibold text-gray-700">
+                <a class="text-gray-800" href="#">Plataforma Académica</a>
+            </div>
+            <nav class="flex space-x-4">
+                <a class="text-gray-700 hover:text-blue-600" href="#">Inicio</a>
+                <a class="text-gray-700 hover:text-blue-600" href="#">Servicios</a>
+                <a class="text-gray-700 hover:text-blue-600" href="#">Sobre Nosotros</a>
+                <a class="text-gray-700 hover:text-blue-600" href="#">Contacto</a>
+                <a class="text-gray-700 hover:text-blue-600" href="#">Iniciar Sesión/Registrarse</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container mx-auto px-6 py-8">
+        <section class="mb-12">
+            <div class="bg-cover bg-center h-64 rounded-lg shadow-md" style="background-image: url('https://placehold.co/1200x400');">
+                <div class="flex items-center justify-center h-full bg-gray-900 bg-opacity-50 rounded-lg">
+                    <div class="text-center">
+                        <h1 class="text-white text-4xl font-semibold">Bienvenido a la Plataforma Académica</h1>
+                        <p class="text-gray-300 mt-4">Transforma tu conocimiento con nuestros servicios exclusivos</p>
+                        <a class="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg" href="#">Regístrate Ahora</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6">Nuestros Servicios</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-file-alt text-blue-600 text-3xl"></i>
+                        <h3 class="text-xl font-semibold text-gray-800 ml-4">Conversión de Contenido</h3>
+                    </div>
+                    <p class="text-gray-600">Transforma tus archivos en resúmenes, podcasts educativos, mapas conceptuales y más.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-project-diagram text-blue-600 text-3xl"></i>
+                        <h3 class="text-xl font-semibold text-gray-800 ml-4">Creación de Proyectos</h3>
+                    </div>
+                    <p class="text-gray-600">Solicita la creación de proyectos académicos personalizados según tus necesidades.</p>
+                </div>
+            </div>
+        </section>
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6">Testimonios</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <img alt="Estudiante satisfecho" class="w-16 h-16 rounded-full mx-auto mb-4" src="https://storage.googleapis.com/a1aa/image/bOTX4VfWbjXEYSIaU51G6WHGBHiAV2Q6Wf37WnVgm0pwpJCUA.jpg" width="100" height="100">
+                    <p class="text-gray-600">"La plataforma me ha ayudado a mejorar mis estudios de manera significativa. ¡Altamente recomendada!"</p>
+                    <p class="text-gray-800 font-semibold mt-4">- Estudiante 1</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <img alt="Estudiante satisfecho" class="w-16 h-16 rounded-full mx-auto mb-4" src="https://storage.googleapis.com/a1aa/image/bOTX4VfWbjXEYSIaU51G6WHGBHiAV2Q6Wf37WnVgm0pwpJCUA.jpg" width="100" height="100">
+                    <p class="text-gray-600">"Los servicios de conversión de contenido son excelentes y muy útiles para mis estudios."</p>
+                    <p class="text-gray-800 font-semibold mt-4">- Estudiante 2</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <img alt="Estudiante satisfecho" class="w-16 h-16 rounded-full mx-auto mb-4" src="https://storage.googleapis.com/a1aa/image/bOTX4VfWbjXEYSIaU51G6WHGBHiAV2Q6Wf37WnVgm0pwpJCUA.jpg" width="100" height="100">
+                    <p class="text-gray-600">"La creación de proyectos personalizados me ha permitido obtener mejores calificaciones."</p>
+                    <p class="text-gray-800 font-semibold mt-4">- Estudiante 3</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-white shadow mt-12">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <p class="text-gray-700">© 2023 Plataforma Académica. Todos los derechos reservados.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a class="text-gray-700 hover:text-blue-600" href="#">Política de Privacidad</a>
+                    <a class="text-gray-700 hover:text-blue-600" href="#">Términos de Servicio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
