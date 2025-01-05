@@ -1,127 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios Académicos para Estudiantes</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-        }
-        nav {
-            background-color: #333;
-            overflow: hidden;
-        }
-        nav a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-        }
-        nav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-        section {
-            padding: 20px;
-        }
-        h1, h2 {
-            color: #4CAF50;
-        }
-        .services-list, .process-list {
-            list-style-type: none;
-            padding: 0;
-        }
-        .services-list li, .process-list li {
-            margin: 5px 0;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
-        }
-    </style>
+    <title>Servicios a Estudiantes</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
-        <h1>Servicios Académicos para Estudiantes</h1>
-    </header>
-    <nav>
-        <a href="#section1">Transformación de Recursos</a>
-        <a href="#section2">Creación de Contenidos</a>
-    </nav>
-
-    <section id="section1">
-        <h2>Transformación de Recursos</h2>
-        <p>Transformamos cualquier tipo de archivo o recurso en herramientas de estudio personalizadas y de alto valor educativo. Los tipos de archivo que aceptamos incluyen:</p>
-        <ul class="services-list">
-            <li>Audios</li>
-            <li>Videos</li>
-            <li>Imágenes</li>
-            <li>Manuscritos</li>
-            <li>Texto</li>
-            <li>Videos de YouTube</li>
-            <li>PDF</li>
-            <li>Excel</li>
-            <li>Diapositivas</li>
-            <li>Otros (adjunta tu recurso para evaluarlo).</li>
-        </ul>
-        <p>Podemos transformar estos recursos en:</p>
-        <ul class="services-list">
-            <li>Podcasts Educativos</li>
-            <li>Resúmenes y Notas de Contenido</li>
-            <li>Mini Exámenes</li>
-            <li>Diagramas y Mapas Conceptuales</li>
-            <li>Presentaciones Visuales</li>
-            <li>Digitalización y Edición</li>
-            <li>Métodos de Estudio (incluyendo Cornell)</li>
-            <li>Análisis</li>
-            <li>Otros (detalla lo que necesitas).</li>
-        </ul>
-    </section>
-
-    <section id="section2">
-        <h2>Creación de Contenidos Académicos</h2>
-        <p>Ofrecemos servicios personalizados para crear contenido académico de alta calidad según las necesidades del estudiante. Algunos de nuestros servicios incluyen:</p>
-        <ul class="services-list">
-            <li>Investigaciones Académicas</li>
-            <li>Estudios de Caso</li>
-            <li>Proyectos Académicos</li>
-            <li>Tesis</li>
-            <li>Diapositivas</li>
-            <li>Mapas Conceptuales</li>
-            <li>Resúmenes</li>
-            <li>Ensayos y Artículos</li>
-            <li>Informes de Laboratorio</li>
-            <li>Planes de Estudio</li>
-            <li>Revisión y Edición</li>
-            <li>Consultoría Académica</li>
-            <li>Preparación para Exámenes</li>
-            <li>Trabajos de Fin de Curso</li>
-            <li>Publicaciones Académicas</li>
-        </ul>
-        <h3>Proceso de Trabajo</h3>
-        <ol class="process-list">
-            <li><strong>Recolección de Información:</strong> Solicitamos el título del trabajo, pautas y cualquier otra información relevante.</li>
-            <li><strong>Desarrollo del Contenido:</strong> Realizamos la investigación y desarrollamos el contenido según las especificaciones.</li>
-            <li><strong>Revisión y Entrega:</strong> Revisamos la calidad del trabajo antes de la entrega final.</li>
-        </ol>
-    </section>
-
+    <div class="sidebar">
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo">
+            <span>Dashboard</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Nuevo</a></li>
+                <li><a href="lerner.html">Lerner</a></li>
+                <li><a href="grupos_estudio.html">Grupos de estudio</a></li>
+            </ul>
+        </nav>
+        <div class="recent-files">
+            <h3>Recientes</h3>
+            <ul>
+                <li><a href="#">1. Video_omM3yEKkemM</a></li>
+            </ul>
+        </div>
+        <div class="feedback">
+            <a href="feedback.html">Danos Feedback</a>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <h1>Comienza subiendo tus audios o textos</h1>
+            <p>Elige una opción y transformalo en conocimiento</p>
+            <button>Crear Gratis</button>
+        </div>
+        <div class="upload-options">
+            <div class="option">
+                <input type="file" id="audioVideo" accept="audio/*,video/*">
+                <label for="audioVideo">Subir Audio/Video</label>
+            </div>
+            <div class="option">
+                <input type="url" id="youtubeUrl" placeholder="URL de YouTube">
+                <label for="youtubeUrl">Video YouTube</label>
+            </div>
+            <div class="option">
+                <input type="file" id="text" accept=".txt,.doc,.docx">
+                <label for="text">Subir Texto</label>
+            </div>
+            <div class="option">
+                <input type="file" id="manuscript" accept=".pdf">
+                <label for="manuscript">Subir Manuscrito</label>
+            </div>
+        </div>
+        <div class="popular-videos">
+            <h2>Populares</h2>
+            <div class="video-card">
+                <img src="images/popular1.jpg" alt="Popular Video 1">
+                <p>¿Qué tan importante es Excel?</p>
+            </div>
+            <div class="video-card">
+                <img src="images/popular2.jpg" alt="Popular Video 2">
+                <p>The Underdog: From $10/hr to $1.9M/Year</p>
+            </div>
+        </div>
+    </div>
     <footer>
-        <p>&copy; 2025 Servicios Académicos para Estudiantes. Todos los derechos reservados.</p>
+        <p>&copy; 2023 Servicios a Estudiantes. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>
