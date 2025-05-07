@@ -1,42 +1,853 @@
-<!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de Sesión - Plataforma Académica</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-        }
-    </style>
-</head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Inicio de Sesión</h2>
-        <form id="loginForm">
-            <div class="mb-4">
-                <label for="password" class="block text-gray-700">Contraseña</label>
-                <input type="password" id="password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" required>
-            </div>
-            <button type="submit" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg">Iniciar Sesión</button>
-            <p id="errorMessage" class="text-red-500 mt-4 hidden">Contraseña incorrecta. Inténtalo de nuevo.</p>
-        </form>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Plataforma de Financiamiento e Innovación
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: "Roboto", sans-serif;
+      background-color: #fefcf7;
+      color: #3b3a36;
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Smooth scroll for anchor links */
+    html {
+      scroll-behavior: smooth;
+    }
+    /* Focus visible for accessibility */
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+      outline: 2px solid #bfa14a;
+      outline-offset: 2px;
+    }
+  </style>
+ </head>
+ <body>
+  <!-- Navbar -->
+  <header class="bg-white border-b border-gray-300 sticky top-0 z-50 shadow-sm">
+   <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+    <a aria-label="Ir a inicio" class="text-2xl font-extrabold tracking-wide text-gray-900 hover:text-yellow-600 transition flex items-center" href="#inicio">
+     <i class="fas fa-gem mr-2 text-yellow-600">
+     </i>
+     Innovación & Finanzas
+    </a>
+    <nav class="hidden md:flex space-x-10 font-semibold text-gray-700">
+     <a class="hover:text-yellow-600 transition px-2 py-1 rounded focus-visible:ring-2 focus-visible:ring-yellow-500 focus-visible:ring-offset-2" href="#inicio">
+      Inicio
+     </a>
+     <a class="hover:text-yellow-600 transition px-2 py-1 rounded focus-visible:ring-2 focus-visible:ring-yellow-500 focus-visible:ring-offset-2" href="#proyectos">
+      Proyectos
+     </a>
+     <a class="hover:text-yellow-600 transition px-2 py-1 rounded focus-visible:ring-2 focus-visible:ring-yellow-500 focus-visible:ring-offset-2" href="#registro">
+      Registro / Login
+     </a>
+     <a class="hover:text-yellow-600 transition px-2 py-1 rounded focus-visible:ring-2 focus-visible:ring-yellow-500 focus-visible:ring-offset-2" href="#indices">
+      Índices de Inversión
+     </a>
+     <a class="hover:text-yellow-600 transition px-2 py-1 rounded focus-visible:ring-2 focus-visible:ring-yellow-500 focus-visible:ring-offset-2" href="#recursos">
+      Recursos
+     </a>
+     <a class="hover:text-yellow-600 transition px-2 py-1 rounded focus-visible:ring-2 focus-visible:ring-yellow-500 focus-visible:ring-offset-2" href="#blog">
+      Blog & Comunidad
+     </a>
+    </nav>
+    <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menú" class="md:hidden focus:outline-none text-gray-700 p-2 rounded hover:bg-yellow-100 transition" id="menu-btn">
+     <i class="fas fa-bars text-2xl">
+     </i>
+    </button>
+   </div>
+   <nav aria-label="Menú móvil" class="hidden bg-white border-t border-gray-300 text-gray-700 px-6 pb-4 md:hidden" id="mobile-menu" role="menu">
+    <a class="block py-3 border-b border-gray-200 hover:bg-yellow-50 rounded transition px-3 focus-visible:ring-2 focus-visible:ring-yellow-500 focus-visible:ring-offset-2" href="#inicio" role="menuitem">
+     Inicio
+    </a>
+    <a class="block py-3 border-b border-gray-200 hover:bg-yellow-50 rounded transition px-3 focus-visible:ring-2 focus-visible:ring-yellow-500 focus-visible:ring-offset-2" href="#proyectos" role="menuitem">
+     Proyectos
+    </a>
+    <a class="block py-3 border-b border-gray-200 hover:bg-yellow-50 rounded transition px-3 focus-visible:ring-2 focus-visible:ring-yellow-500 focus-visible:ring-offset-2" href="#registro" role="menuitem">
+     Registro / Login
+    </a>
+    <a class="block py-3 border-b border-gray-200 hover:bg-yellow-50 rounded transition px-3 focus-visible:ring-2 focus-visible:ring-yellow-500 focus-visible:ring-offset-2" href="#indices" role="menuitem">
+     Índices de Inversión
+    </a>
+    <a class="block py-3 border-b border-gray-200 hover:bg-yellow-50 rounded transition px-3 focus-visible:ring-2 focus-visible:ring-yellow-500 focus-visible:ring-offset-2" href="#recursos" role="menuitem">
+     Recursos
+    </a>
+    <a class="block py-3 hover:bg-yellow-50 rounded transition px-3 focus-visible:ring-2 focus-visible:ring-yellow-500 focus-visible:ring-offset-2" href="#blog" role="menuitem">
+     Blog & Comunidad
+    </a>
+   </nav>
+  </header>
+  <!-- Hero Section -->
+  <section aria-label="Sección principal con llamada a la acción" class="relative bg-gradient-to-b from-white to-yellow-50 overflow-hidden" id="inicio">
+   <img alt="Montaje dinámico mostrando emprendedores, inversores y proyectos exitosos como una granja, una startup tecnológica y un producto sostenible" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover opacity-10" height="600" loading="lazy" src="https://storage.googleapis.com/a1aa/image/d5983d0d-6229-4ca0-560e-02247ef419f7.jpg" width="1920"/>
+   <div class="relative max-w-7xl mx-auto px-6 py-24 md:py-32 text-center md:text-left">
+    <h1 class="text-5xl font-extrabold text-gray-900 max-w-4xl leading-tight drop-shadow-md">
+     Conecta tu proyecto con el futuro: Financiamiento, socios y oportunidades
+    </h1>
+    <p class="mt-6 text-xl text-gray-700 max-w-3xl drop-shadow-sm">
+     Nuestra plataforma impulsada por IA te ayuda a financiar, escalar o colaborar en proyectos innovadores.
+    </p>
+    <div class="mt-10 flex flex-col sm:flex-row sm:justify-center md:justify-start gap-6 max-w-xl mx-auto md:mx-0">
+     <a aria-label="Sube tu proyecto" class="inline-flex items-center justify-center px-8 py-4 bg-yellow-600 hover:bg-yellow-700 text-white font-semibold rounded-lg shadow-lg transition focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" href="#registro" role="button">
+      Sube tu proyecto
+     </a>
+     <a aria-label="Explora oportunidades de inversión" class="inline-flex items-center justify-center px-8 py-4 bg-gray-900 hover:bg-gray-800 text-yellow-400 font-semibold rounded-lg shadow-lg transition focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" href="#proyectos" role="button">
+      Explora oportunidades de inversión
+     </a>
+     <a aria-label="Promociona o vende productos" class="inline-flex items-center justify-center px-8 py-4 bg-gray-700 hover:bg-gray-600 text-yellow-300 font-semibold rounded-lg shadow-lg transition focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" href="#recursos" role="button">
+      Promociona o vende productos
+     </a>
     </div>
+   </div>
+  </section>
+  <!-- Beneficios -->
+  <section aria-label="Resumen de beneficios" class="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 text-center">
+   <div class="flex flex-col items-center space-y-5">
+    <i class="fas fa-robot text-6xl text-yellow-600 drop-shadow-lg">
+    </i>
+    <h3 class="text-2xl font-semibold text-gray-900">
+     IA para evaluar y proyectar
+    </h3>
+    <p class="text-gray-600 max-w-xs leading-relaxed">
+     Análisis profesional de proyectos con inteligencia artificial para mejores decisiones.
+    </p>
+   </div>
+   <div class="flex flex-col items-center space-y-5">
+    <i class="fas fa-shield-alt text-6xl text-gray-800 drop-shadow-lg">
+    </i>
+    <h3 class="text-2xl font-semibold text-gray-900">
+     Inversiones seguras y de alto riesgo
+    </h3>
+    <p class="text-gray-600 max-w-xs leading-relaxed">
+     Opciones para todos los perfiles, desde conservadores hasta arriesgados.
+    </p>
+   </div>
+   <div class="flex flex-col items-center space-y-5">
+    <i class="fas fa-handshake text-6xl text-yellow-500 drop-shadow-lg">
+    </i>
+    <h3 class="text-2xl font-semibold text-gray-900">
+     Colabora y genera ingresos
+    </h3>
+    <p class="text-gray-600 max-w-xs leading-relaxed">
+     Oportunidades para vendedores, promotores y colaboradores en diversos proyectos.
+    </p>
+   </div>
+   <div class="flex flex-col items-center space-y-5">
+    <i class="fas fa-chart-pie text-6xl text-gray-700 drop-shadow-lg">
+    </i>
+    <h3 class="text-2xl font-semibold text-gray-900">
+     Diversifica con índices
+    </h3>
+    <p class="text-gray-600 max-w-xs leading-relaxed">
+     Invierte en múltiples proyectos agrupados para reducir riesgos y maximizar retornos.
+    </p>
+   </div>
+  </section>
+  <!-- Testimonios -->
+  <section aria-label="Testimonios de usuarios" class="bg-yellow-50 py-20 px-6 max-w-5xl mx-auto text-center rounded-lg shadow-lg">
+   <h2 class="text-4xl font-extrabold text-gray-900 mb-14 tracking-wide">
+    Testimonios
+   </h2>
+   <div class="space-y-14 max-w-4xl mx-auto">
+    <blockquote class="text-gray-800 italic text-xl leading-relaxed">
+     “Gracias a la plataforma, conseguí $10,000 para mi granja y un socio para distribución.”
+     <footer class="mt-5 font-semibold text-yellow-600 text-lg">
+      – María López, Emprendedora Agrícola
+     </footer>
+    </blockquote>
+    <blockquote class="text-gray-800 italic text-xl leading-relaxed">
+     “Invertir aquí me ha permitido diversificar mi cartera y obtener retornos estables.”
+     <footer class="mt-5 font-semibold text-yellow-600 text-lg">
+      – Carlos Méndez, Inversor
+     </footer>
+    </blockquote>
+    <blockquote class="text-gray-800 italic text-xl leading-relaxed">
+     “Como colaborador, he encontrado proyectos que necesitan mis servicios y he generado ingresos extra.”
+     <footer class="mt-5 font-semibold text-yellow-600 text-lg">
+      – Ana Torres, Colaboradora
+     </footer>
+    </blockquote>
+   </div>
+  </section>
+  <!-- Estadísticas -->
+  <section aria-label="Estadísticas de la plataforma" class="bg-white py-20 px-6 max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-16 text-center">
+   <div>
+    <p class="text-6xl font-extrabold text-yellow-600 drop-shadow-md">
+     +50
+    </p>
+    <p class="mt-3 text-xl font-semibold text-gray-900 tracking-wide">
+     Proyectos financiados
+    </p>
+   </div>
+   <div>
+    <p class="text-6xl font-extrabold text-yellow-600 drop-shadow-md">
+     +100
+    </p>
+    <p class="mt-3 text-xl font-semibold text-gray-900 tracking-wide">
+     Inversores activos
+    </p>
+   </div>
+   <div>
+    <p class="text-6xl font-extrabold text-yellow-600 drop-shadow-md">
+     +20%
+    </p>
+    <p class="mt-3 text-xl font-semibold text-gray-900 tracking-wide">
+     Retorno promedio anual
+    </p>
+   </div>
+  </section>
+  <!-- Proyectos Destacados Carousel -->
+  <section aria-label="Proyectos destacados" class="bg-yellow-50 py-20 px-6 max-w-7xl mx-auto" id="proyectos">
+   <h2 class="text-4xl font-extrabold text-gray-900 mb-14 text-center tracking-wide">
+    Proyectos Destacados
+   </h2>
+   <div class="relative overflow-x-auto scrollbar-hide">
+    <div class="flex space-x-8 px-2 sm:px-0">
+     <!-- Proyecto 1 -->
+     <article aria-label="Ver detalles del proyecto Granja de Pollos Orgánicos" class="bg-white rounded-2xl shadow-lg w-80 flex-shrink-0 border border-gray-300 hover:shadow-2xl transition cursor-pointer focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" onclick="alert('Ver detalles del proyecto Granja de Pollos Orgánicos')" role="button" tabindex="0">
+      <img alt="Imagen de una granja de pollos orgánicos con gallinas en un ambiente natural y sostenible" class="rounded-t-2xl w-full h-48 object-cover" height="192" loading="lazy" src="https://storage.googleapis.com/a1aa/image/8e730036-cc4f-4e01-fce4-0af65e062c39.jpg" width="320"/>
+      <div class="p-6">
+       <h3 class="text-2xl font-semibold text-gray-900">
+        Granja de Pollos Orgánicos
+       </h3>
+       <p class="mt-2 text-gray-700 text-sm leading-relaxed">
+        Agricultura sostenible con enfoque en producción orgánica y bienestar animal.
+       </p>
+       <p class="mt-4 font-semibold text-yellow-600 text-lg">
+        $10,000 por 15%
+       </p>
+       <p class="mt-2 flex items-center space-x-3 text-sm font-medium text-gray-700">
+        <span aria-label="Nivel de riesgo bajo" class="inline-block w-4 h-4 rounded-full bg-yellow-500" title="Bajo riesgo">
+        </span>
+        <span>
+         Bajo riesgo
+        </span>
+       </p>
+      </div>
+     </article>
+     <!-- Proyecto 2 -->
+     <article aria-label="Ver detalles del proyecto Startup Tecnológica Innovadora" class="bg-white rounded-2xl shadow-lg w-80 flex-shrink-0 border border-gray-300 hover:shadow-2xl transition cursor-pointer focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" onclick="alert('Ver detalles del proyecto Startup Tecnológica Innovadora')" role="button" tabindex="0">
+      <img alt="Imagen de una startup tecnológica con equipo trabajando en desarrollo de software y tecnología innovadora" class="rounded-t-2xl w-full h-48 object-cover" height="192" loading="lazy" src="https://storage.googleapis.com/a1aa/image/7bcfe650-53df-4531-19c5-fc6109353b24.jpg" width="320"/>
+      <div class="p-6">
+       <h3 class="text-2xl font-semibold text-gray-900">
+        Startup Tecnológica Innovadora
+       </h3>
+       <p class="mt-2 text-gray-700 text-sm leading-relaxed">
+        Desarrollo de software para optimizar procesos empresariales con IA.
+       </p>
+       <p class="mt-4 font-semibold text-gray-700 text-lg">
+        $25,000 por 20%
+       </p>
+       <p class="mt-2 flex items-center space-x-3 text-sm font-medium text-gray-700">
+        <span aria-label="Nivel de riesgo medio" class="inline-block w-4 h-4 rounded-full bg-gray-500" title="Medio riesgo">
+        </span>
+        <span>
+         Medio riesgo
+        </span>
+       </p>
+      </div>
+     </article>
+     <!-- Proyecto 3 -->
+     <article aria-label="Ver detalles del proyecto Producto Sostenible de Consumo" class="bg-white rounded-2xl shadow-lg w-80 flex-shrink-0 border border-gray-300 hover:shadow-2xl transition cursor-pointer focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" onclick="alert('Ver detalles del proyecto Producto Sostenible de Consumo')" role="button" tabindex="0">
+      <img alt="Imagen de un producto sostenible para consumo, con empaques ecológicos y diseño moderno" class="rounded-t-2xl w-full h-48 object-cover" height="192" loading="lazy" src="https://storage.googleapis.com/a1aa/image/e57f4a63-1488-4aa5-cf60-8b397501db1d.jpg" width="320"/>
+      <div class="p-6">
+       <h3 class="text-2xl font-semibold text-gray-900">
+        Producto Sostenible de Consumo
+       </h3>
+       <p class="mt-2 text-gray-700 text-sm leading-relaxed">
+        Línea de productos ecológicos para el hogar con materiales reciclados.
+       </p>
+       <p class="mt-4 font-semibold text-gray-700 text-lg">
+        $15,000 por 25%
+       </p>
+       <p class="mt-2 flex items-center space-x-3 text-sm font-medium text-gray-700">
+        <span aria-label="Nivel de riesgo alto" class="inline-block w-4 h-4 rounded-full bg-gray-700" title="Alto riesgo">
+        </span>
+        <span>
+         Alto riesgo
+        </span>
+       </p>
+      </div>
+     </article>
+     <!-- Proyecto 4 -->
+     <article aria-label="Ver detalles del proyecto Cultivo Orgánico de Frutas" class="bg-white rounded-2xl shadow-lg w-80 flex-shrink-0 border border-gray-300 hover:shadow-2xl transition cursor-pointer focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" onclick="alert('Ver detalles del proyecto Cultivo Orgánico de Frutas')" role="button" tabindex="0">
+      <img alt="Imagen de cultivo orgánico de frutas en campo abierto con árboles frutales y ambiente natural" class="rounded-t-2xl w-full h-48 object-cover" height="192" loading="lazy" src="https://storage.googleapis.com/a1aa/image/fd368a0d-6be0-4a4e-3bb6-cc8cfbe06920.jpg" width="320"/>
+      <div class="p-6">
+       <h3 class="text-2xl font-semibold text-gray-900">
+        Cultivo Orgánico de Frutas
+       </h3>
+       <p class="mt-2 text-gray-700 text-sm leading-relaxed">
+        Producción de frutas orgánicas para mercados locales y exportación.
+       </p>
+       <p class="mt-4 font-semibold text-yellow-600 text-lg">
+        $12,000 por 18%
+       </p>
+       <p class="mt-2 flex items-center space-x-3 text-sm font-medium text-gray-700">
+        <span aria-label="Nivel de riesgo bajo" class="inline-block w-4 h-4 rounded-full bg-yellow-500" title="Bajo riesgo">
+        </span>
+        <span>
+         Bajo riesgo
+        </span>
+       </p>
+      </div>
+     </article>
+     <!-- Proyecto 5 -->
+     <article aria-label="Ver detalles del proyecto Aplicación de Salud Digital" class="bg-white rounded-2xl shadow-lg w-80 flex-shrink-0 border border-gray-300 hover:shadow-2xl transition cursor-pointer focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" onclick="alert('Ver detalles del proyecto Aplicación de Salud Digital')" role="button" tabindex="0">
+      <img alt="Imagen de aplicación móvil de salud digital con interfaz moderna y usuarios interactuando" class="rounded-t-2xl w-full h-48 object-cover" height="192" loading="lazy" src="https://storage.googleapis.com/a1aa/image/a922b173-a5cc-4d00-0e4c-295546afe81e.jpg" width="320"/>
+      <div class="p-6">
+       <h3 class="text-2xl font-semibold text-gray-900">
+        Aplicación de Salud Digital
+       </h3>
+       <p class="mt-2 text-gray-700 text-sm leading-relaxed">
+        Plataforma para monitoreo y gestión de salud personal con IA.
+       </p>
+       <p class="mt-4 font-semibold text-gray-700 text-lg">
+        $30,000 por 22%
+       </p>
+       <p class="mt-2 flex items-center space-x-3 text-sm font-medium text-gray-700">
+        <span aria-label="Nivel de riesgo medio" class="inline-block w-4 h-4 rounded-full bg-gray-500" title="Medio riesgo">
+        </span>
+        <span>
+         Medio riesgo
+        </span>
+       </p>
+      </div>
+     </article>
+    </div>
+   </div>
+  </section>
+  <!-- CTA Final Registro -->
+  <section aria-label="Acceso a la plataforma" class="bg-white py-20 px-8 max-w-3xl mx-auto rounded-xl shadow-xl mt-20" id="registro">
+   <div class="text-center max-w-xl mx-auto">
+    <h2 class="text-4xl font-extrabold mb-8 text-gray-900 tracking-wide">
+     Únete ahora
+    </h2>
+    <p class="mb-10 text-lg text-gray-700 leading-relaxed">
+     Inicia sesión o crea una cuenta para conectar con emprendedores, inversores y colaboradores.
+    </p>
+    <button aria-label="Abrir formulario de inicio de sesión" class="bg-yellow-600 hover:bg-yellow-700 text-white font-extrabold rounded-lg py-4 px-8 shadow-lg transition focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" id="login-btn">
+     Iniciar Sesión / Registrarse
+    </button>
+   </div>
+   <!-- Modal para inicio de sesión -->
+   <div aria-hidden="true" aria-labelledby="login-modal-title" aria-modal="true" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50" id="login-modal" role="dialog">
+    <div class="bg-white rounded-lg shadow-2xl border border-gray-300 max-w-md w-full p-8 relative">
+     <header class="flex justify-between items-center mb-6">
+      <h3 class="text-2xl font-semibold text-gray-900" id="login-modal-title">
+       Iniciar Sesión
+      </h3>
+      <button aria-label="Cerrar formulario de inicio de sesión" class="focus:outline-none hover:text-yellow-600 text-gray-700" id="login-modal-close" title="Cerrar">
+       <i class="fas fa-times text-xl">
+       </i>
+      </button>
+     </header>
+     <form aria-label="Formulario de inicio de sesión" class="space-y-6" id="login-form" onsubmit="event.preventDefault(); alert('Inicio de sesión enviado');">
+      <div>
+       <label class="block font-semibold text-gray-900 text-lg mb-2" for="login-email">
+        Correo electrónico
+       </label>
+       <input autocomplete="email" class="w-full border border-gray-300 rounded-lg px-5 py-4 focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:ring-opacity-50 transition text-lg" id="login-email" name="email" placeholder="Correo electrónico" required type="email"/>
+      </div>
+      <div>
+       <label class="block font-semibold text-gray-900 text-lg mb-2" for="login-password">
+        Contraseña
+       </label>
+       <input autocomplete="current-password" class="w-full border border-gray-300 rounded-lg px-5 py-4 focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:ring-opacity-50 transition text-lg" id="login-password" name="password" placeholder="Contraseña" required type="password"/>
+      </div>
+      <button aria-label="Iniciar sesión" class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-extrabold rounded-lg py-4 shadow-lg transition focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" type="submit">
+       Iniciar Sesión
+      </button>
+     </form>
+     <p class="mt-6 text-center text-gray-700 text-lg">
+      ¿No tienes cuenta? 
+      <a class="text-yellow-600 hover:underline font-semibold" href="#" onclick="alert('Redirigiendo a formulario de registro')">
+       Crear cuenta
+      </a>
+     </p>
+    </div>
+   </div>
+  </section>
+  <!-- Sección Índices de Inversión -->
+  <section aria-label="Sección de índices de inversión" class="bg-yellow-50 py-20 px-8 max-w-7xl mx-auto rounded-xl shadow-xl mt-20" id="indices">
+   <h2 class="text-4xl font-extrabold text-gray-900 mb-14 text-center tracking-wide">
+    Índices de Inversión
+   </h2>
+   <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+    <!-- Índice 1 -->
+    <article aria-label="Invertir en índice agrícola estable" class="bg-white rounded-xl shadow-lg border border-gray-300 p-8 flex flex-col cursor-pointer hover:shadow-2xl transition focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" onclick="alert('Invertir en índice agrícola estable')" role="button" tabindex="0">
+     <h3 class="text-3xl font-semibold text-gray-900 mb-5">
+      Índice Agrícola Estable
+     </h3>
+     <p class="text-gray-700 flex-grow mb-6 leading-relaxed">
+      Incluye granjas de pollos, cultivos orgánicos y apicultura. Riesgo bajo con retorno proyectado del 12% anual.
+     </p>
+     <img alt="Gráficos de rendimiento histórico simulados para índice agrícola estable" class="rounded-lg mb-6 object-cover w-full h-48 shadow-md" height="200" loading="lazy" src="https://storage.googleapis.com/a1aa/image/cb708e79-b33a-417c-c56d-2c339cbb5107.jpg" width="400"/>
+     <ul class="mb-6 text-sm text-gray-700 space-y-2">
+      <li>
+       <strong>
+        Proyectos incluidos:
+       </strong>
+       Granja de Pollos, Cultivo Orgánico, Apicultura
+      </li>
+      <li>
+       <strong>
+        Distribución del capital:
+       </strong>
+       40% granjas, 30% cultivos, 30% apicultura
+      </li>
+      <li>
+       <strong>
+        Riesgo promedio:
+       </strong>
+       Bajo
+      </li>
+      <li>
+       <strong>
+        Retorno esperado:
+       </strong>
+       12% anual
+      </li>
+     </ul>
+     <button class="mt-auto bg-yellow-600 hover:bg-yellow-700 text-white font-semibold rounded-lg py-4 shadow-lg transition focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" type="button">
+      Invertir en índice
+     </button>
+    </article>
+    <!-- Índice 2 -->
+    <article aria-label="Invertir en índice tecnológico diversificado" class="bg-white rounded-xl shadow-lg border border-gray-300 p-8 flex flex-col cursor-pointer hover:shadow-2xl transition focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" onclick="alert('Invertir en índice tecnológico diversificado')" role="button" tabindex="0">
+     <h3 class="text-3xl font-semibold text-gray-900 mb-5">
+      Índice Tecnológico Diversificado
+     </h3>
+     <p class="text-gray-700 flex-grow mb-6 leading-relaxed">
+      Agrupa startups de software, aplicaciones móviles y educación online. Riesgo medio con retorno proyectado del 18% anual.
+     </p>
+     <img alt="Gráficos de rendimiento histórico simulados para índice tecnológico diversificado" class="rounded-lg mb-6 object-cover w-full h-48 shadow-md" height="200" loading="lazy" src="https://storage.googleapis.com/a1aa/image/ea098971-45f9-4113-f1b2-1d40abb1e316.jpg" width="400"/>
+     <ul class="mb-6 text-sm text-gray-700 space-y-2">
+      <li>
+       <strong>
+        Proyectos incluidos:
+       </strong>
+       Startups de software, Apps móviles, Educación online
+      </li>
+      <li>
+       <strong>
+        Distribución del capital:
+       </strong>
+       50% software, 30% apps, 20% educación
+      </li>
+      <li>
+       <strong>
+        Riesgo promedio:
+       </strong>
+       Medio
+      </li>
+      <li>
+       <strong>
+        Retorno esperado:
+       </strong>
+       18% anual
+      </li>
+     </ul>
+     <button class="mt-auto bg-yellow-600 hover:bg-yellow-700 text-white font-semibold rounded-lg py-4 shadow-lg transition focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" type="button">
+      Invertir en índice
+     </button>
+    </article>
+    <!-- Índice 3 -->
+    <article aria-label="Invertir en índice sostenible y comercio local" class="bg-white rounded-xl shadow-lg border border-gray-300 p-8 flex flex-col cursor-pointer hover:shadow-2xl transition focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" onclick="alert('Invertir en índice sostenible y comercio local')" role="button" tabindex="0">
+     <h3 class="text-3xl font-semibold text-gray-900 mb-5">
+      Índice Sostenible y Comercio Local
+     </h3>
+     <p class="text-gray-700 flex-grow mb-6 leading-relaxed">
+      Combina proyectos de energía renovable, logística sostenible y comercio electrónico local. Riesgo bajo-medio con retorno proyectado del 14% anual.
+     </p>
+     <img alt="Gráficos de rendimiento histórico simulados para índice sostenible y comercio local" class="rounded-lg mb-6 object-cover w-full h-48 shadow-md" height="200" loading="lazy" src="https://storage.googleapis.com/a1aa/image/c763951d-35b6-4168-dd7c-2806155029df.jpg" width="400"/>
+     <ul class="mb-6 text-sm text-gray-700 space-y-2">
+      <li>
+       <strong>
+        Proyectos incluidos:
+       </strong>
+       Energía renovable, logística, comercio local
+      </li>
+      <li>
+       <strong>
+        Distribución del capital:
+       </strong>
+       40% energía, 30% logística, 30% comercio
+      </li>
+      <li>
+       <strong>
+        Riesgo promedio:
+       </strong>
+       Bajo - Medio
+      </li>
+      <li>
+       <strong>
+        Retorno esperado:
+       </strong>
+       14% anual
+      </li>
+     </ul>
+     <button class="mt-auto bg-yellow-600 hover:bg-yellow-700 text-white font-semibold rounded-lg py-4 shadow-lg transition focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" type="button">
+      Invertir en índice
+     </button>
+    </article>
+   </div>
+  </section>
+  <!-- Sección Recursos y Educación -->
+  <section aria-label="Sección de recursos y educación" class="max-w-7xl mx-auto px-6 py-20" id="recursos">
+   <h2 class="text-4xl font-extrabold text-gray-900 mb-14 text-center tracking-wide">
+    Recursos y Educación
+   </h2>
+   <div class="grid grid-cols-1 md:grid-cols-3 gap-14">
+    <!-- Guías y Tutoriales -->
+    <article aria-label="Guías y Tutoriales" class="bg-white rounded-xl shadow-lg p-8 flex flex-col cursor-pointer hover:shadow-2xl transition focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" onclick="alert('Cómo subir un proyecto exitoso')" role="button" tabindex="0">
+     <h3 class="text-3xl font-semibold text-gray-900 mb-6">
+      Guías y Tutoriales
+     </h3>
+     <ul class="list-disc list-inside space-y-4 text-gray-700 flex-grow text-lg leading-relaxed">
+      <li>
+       <a class="text-yellow-600 hover:underline" href="#" onclick="alert('Cómo subir un proyecto exitoso')">
+        Cómo subir un proyecto exitoso
+       </a>
+      </li>
+      <li>
+       <a class="text-yellow-600 hover:underline" href="#" onclick="alert('Entender el riesgo en inversiones')">
+        Entender el riesgo en inversiones
+       </a>
+      </li>
+      <li>
+       <a class="text-yellow-600 hover:underline" href="#" onclick="alert('Cómo vender productos de un proyecto')">
+        Cómo vender productos de un proyecto
+       </a>
+      </li>
+     </ul>
+    </article>
+    <!-- Calculadoras de IA -->
+    <article aria-label="Calculadoras de la IA" class="bg-white rounded-xl shadow-lg p-8 flex flex-col" tabindex="0">
+     <h3 class="text-3xl font-semibold text-gray-900 mb-6">
+      Calculadoras de la IA
+     </h3>
+     <p class="text-gray-700 mb-8 text-lg leading-relaxed">
+      Herramientas interactivas para calcular retornos, riesgos o costos proyectados.
+     </p>
+     <form aria-label="Calculadora de inversión" class="space-y-6" onsubmit="event.preventDefault(); alert('Cálculo realizado');">
+      <label class="block font-semibold text-gray-900 text-lg" for="inversion">
+       Ingresa tu inversión
+      </label>
+      <input class="w-full border border-gray-300 rounded-lg px-5 py-4 focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:ring-opacity-50 transition text-lg" id="inversion" min="0" name="inversion" placeholder="$" type="number"/>
+      <label class="block font-semibold text-gray-900 text-lg" for="nivel-riesgo">
+       Nivel de riesgo
+      </label>
+      <select class="w-full border border-gray-300 rounded-lg px-5 py-4 focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:ring-opacity-50 transition text-lg" id="nivel-riesgo" name="nivel-riesgo">
+       <option value="bajo">
+        Bajo
+       </option>
+       <option value="medio">
+        Medio
+       </option>
+       <option value="alto">
+        Alto
+       </option>
+      </select>
+      <button aria-label="Calcular retorno estimado" class="bg-yellow-600 hover:bg-yellow-700 text-white font-extrabold rounded-lg py-4 shadow-lg w-full transition focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" type="submit">
+       Calcular retorno estimado
+      </button>
+     </form>
+    </article>
+    <!-- Webinars y Eventos -->
+    <article aria-label="Webinars y Eventos" class="bg-white rounded-xl shadow-lg p-8 flex flex-col cursor-pointer hover:shadow-2xl transition focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" onclick="alert('Próximo webinar: Estrategias de inversión con IA')" role="button" tabindex="0">
+     <h3 class="text-3xl font-semibold text-gray-900 mb-6">
+      Webinars y Eventos
+     </h3>
+     <ul class="list-disc list-inside space-y-5 text-gray-700 flex-grow text-lg leading-relaxed">
+      <li>
+       Sesiones en vivo con expertos en emprendimiento, finanzas y marketing.
+      </li>
+      <li>
+       Pitch days virtuales donde emprendedores presentan sus proyectos.
+      </li>
+      <li>
+       <a class="text-yellow-600 hover:underline" href="#" onclick="alert('Próximo webinar: Estrategias de inversión con IA')">
+        Próximo webinar: Estrategias de inversión con IA
+       </a>
+      </li>
+     </ul>
+    </article>
+   </div>
+  </section>
+  <!-- Blog y Comunidad -->
+  <section aria-label="Blog y comunidad" class="bg-yellow-50 py-20 px-8 max-w-7xl mx-auto rounded-xl shadow-xl mt-20" id="blog">
+   <h2 class="text-4xl font-extrabold text-gray-900 mb-14 text-center tracking-wide">
+    Blog y Comunidad
+   </h2>
+   <div class="grid grid-cols-1 md:grid-cols-3 gap-14">
+    <!-- Blog -->
+    <article aria-label="Blog" class="bg-white rounded-xl shadow-lg p-8 flex flex-col cursor-pointer hover:shadow-2xl transition focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" onclick="alert('Cómo una granja de pollos financió su expansión con nuestra plataforma')" role="button" tabindex="0">
+     <h3 class="text-3xl font-semibold text-gray-900 mb-6">
+      Blog
+     </h3>
+     <ul class="space-y-8 text-gray-700 flex-grow text-lg leading-relaxed">
+      <li>
+       <a class="text-yellow-600 hover:underline font-semibold cursor-pointer" href="#" onclick="alert('Cómo una granja de pollos financió su expansión con nuestra plataforma')">
+        Cómo una granja de pollos financió su expansión con nuestra plataforma
+       </a>
+       <p class="mt-2 text-base text-gray-600">
+        Descubre el caso de éxito de María López y su granja orgánica.
+       </p>
+      </li>
+      <li>
+       <a class="text-yellow-600 hover:underline font-semibold cursor-pointer" href="#" onclick="alert('Tendencias en inversión para 2024')">
+        Tendencias en inversión para 2024
+       </a>
+       <p class="mt-2 text-base text-gray-600">
+        Análisis de sectores con mayor potencial y riesgo.
+       </p>
+      </li>
+      <li>
+       <a class="text-yellow-600 hover:underline font-semibold cursor-pointer" href="#" onclick="alert('Consejos para emprendedores novatos')">
+        Consejos para emprendedores novatos
+       </a>
+       <p class="mt-2 text-base text-gray-600">
+        Cómo preparar un plan de negocio efectivo.
+       </p>
+      </li>
+     </ul>
+    </article>
+    <!-- Foro / Comunidad -->
+    <article aria-label="Comunidad" class="bg-white rounded-xl shadow-lg p-8 flex flex-col cursor-pointer hover:shadow-2xl transition focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" onclick="alert('Ir al foro de la comunidad')" role="button" tabindex="0">
+     <h3 class="text-3xl font-semibold text-gray-900 mb-6">
+      Comunidad
+     </h3>
+     <p class="text-gray-700 mb-8 text-lg leading-relaxed flex-grow">
+      Espacio para intercambiar ideas, resolver dudas y compartir experiencias.
+     </p>
+     <a class="inline-block bg-yellow-600 hover:bg-yellow-700 text-white font-extrabold rounded-lg py-4 px-8 shadow-lg transition text-center cursor-pointer focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" href="#" onclick="alert('Ir al foro de la comunidad')">
+      Ir al foro
+     </a>
+    </article>
+    <!-- Newsletter -->
+    <article aria-label="Newsletter" class="bg-white rounded-xl shadow-lg p-8 flex flex-col" tabindex="0">
+     <h3 class="text-3xl font-semibold text-gray-900 mb-6">
+      Newsletter
+     </h3>
+     <p class="text-gray-700 mb-8 text-lg leading-relaxed flex-grow">
+      Suscríbete para recibir actualizaciones sobre nuevos proyectos, índices y eventos.
+     </p>
+     <form aria-label="Formulario de suscripción al newsletter" class="space-y-6" onsubmit="event.preventDefault(); alert('Suscripción enviada');">
+      <input class="w-full border border-gray-300 rounded-lg px-5 py-4 focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:ring-opacity-50 transition text-lg" name="emailNewsletter" placeholder="Tu correo electrónico" required="" type="email"/>
+      <button aria-label="Suscribirse al newsletter" class="bg-yellow-600 hover:bg-yellow-700 text-white font-extrabold rounded-lg py-4 shadow-lg w-full transition focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" type="submit">
+       Suscribirse
+      </button>
+     </form>
+    </article>
+   </div>
+  </section>
+  <!-- Chatbot IA -->
+  <button aria-label="Abrir chatbot de ayuda" class="fixed bottom-8 right-8 bg-yellow-600 hover:bg-yellow-700 text-white rounded-full p-5 shadow-2xl focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:ring-opacity-75 z-50" id="chatbot-btn" title="Abrir chatbot de ayuda">
+   <i class="fas fa-robot fa-lg">
+   </i>
+  </button>
+  <div aria-hidden="true" aria-labelledby="chatbot-title" aria-modal="true" class="fixed bottom-24 right-8 w-96 max-w-full bg-white rounded-2xl shadow-2xl border border-gray-300 hidden flex flex-col" id="chatbot" role="dialog">
+   <header class="bg-yellow-600 text-white px-6 py-4 rounded-t-2xl flex justify-between items-center">
+    <h3 class="font-semibold text-xl" id="chatbot-title">
+     Asistente IA
+    </h3>
+    <button aria-label="Cerrar chatbot" class="focus:outline-none hover:text-yellow-300" id="chatbot-close" title="Cerrar chatbot">
+     <i class="fas fa-times">
+     </i>
+    </button>
+   </header>
+   <div class="p-6 flex-grow overflow-y-auto text-gray-800 text-base space-y-4" id="chatbot-messages" style="max-height: 320px;">
+    <p>
+     ¿Eres emprendedor, inversor o colaborador? Te guío.
+    </p>
+   </div>
+   <form aria-label="Formulario de chat" class="p-6 border-t border-gray-200 flex space-x-3" id="chatbot-form">
+    <input aria-label="Escribe tu pregunta" class="flex-grow border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:ring-opacity-50 transition text-base" id="chatbot-input" placeholder="Escribe tu pregunta..." required="" type="text"/>
+    <button aria-label="Enviar mensaje" class="bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg px-6 py-3 font-semibold shadow-lg transition focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75" type="submit">
+     Enviar
+    </button>
+   </form>
+  </div>
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-300 py-14 mt-24">
+   <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-14">
+    <div>
+     <h4 class="font-extrabold text-2xl mb-6 text-gray-900 tracking-wide">
+      Innovación & Finanzas
+     </h4>
+     <p class="text-gray-700 max-w-md leading-relaxed">
+      Plataforma para conectar emprendedores, inversores y colaboradores con apoyo de inteligencia artificial.
+     </p>
+    </div>
+    <div>
+     <h4 class="font-extrabold text-2xl mb-6 text-gray-900 tracking-wide">
+      Enlaces Rápidos
+     </h4>
+     <ul class="space-y-3 text-gray-700 text-lg">
+      <li>
+       <a class="hover:text-yellow-600 transition focus-visible:ring-2 focus-visible:ring-yellow-400 focus-visible:ring-offset-2 rounded px-1" href="#inicio">
+        Inicio
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-yellow-600 transition focus-visible:ring-2 focus-visible:ring-yellow-400 focus-visible:ring-offset-2 rounded px-1" href="#proyectos">
+        Proyectos
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-yellow-600 transition focus-visible:ring-2 focus-visible:ring-yellow-400 focus-visible:ring-offset-2 rounded px-1" href="#registro">
+        Registro / Login
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-yellow-600 transition focus-visible:ring-2 focus-visible:ring-yellow-400 focus-visible:ring-offset-2 rounded px-1" href="#indices">
+        Índices de Inversión
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-yellow-600 transition focus-visible:ring-2 focus-visible:ring-yellow-400 focus-visible:ring-offset-2 rounded px-1" href="#recursos">
+        Recursos
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-yellow-600 transition focus-visible:ring-2 focus-visible:ring-yellow-400 focus-visible:ring-offset-2 rounded px-1" href="#blog">
+        Blog & Comunidad
+       </a>
+      </li>
+     </ul>
+    </div>
+    <div>
+     <h4 class="font-extrabold text-2xl mb-6 text-gray-900 tracking-wide">
+      Contacto
+     </h4>
+     <address class="not-italic space-y-4 text-gray-700 text-lg leading-relaxed">
+      <p>
+       <i class="fas fa-envelope mr-3 text-yellow-600">
+       </i>
+       contacto@innovacionfinanzas.ec
+      </p>
+      <p>
+       <i class="fas fa-phone mr-3 text-yellow-600">
+       </i>
+       +593 9 1234 5678
+      </p>
+      <p>
+       <i class="fas fa-map-marker-alt mr-3 text-yellow-600">
+       </i>
+       Quito, Ecuador
+      </p>
+     </address>
+     <div class="mt-6 flex space-x-8 text-gray-700 text-2xl">
+      <a aria-label="Facebook" class="hover:text-yellow-600 transition focus-visible:ring-2 focus-visible:ring-yellow-400 focus-visible:ring-offset-2 rounded p-1" href="#">
+       <i class="fab fa-facebook-f">
+       </i>
+      </a>
+      <a aria-label="Twitter" class="hover:text-yellow-600 transition focus-visible:ring-2 focus-visible:ring-yellow-400 focus-visible:ring-offset-2 rounded p-1" href="#">
+       <i class="fab fa-twitter">
+       </i>
+      </a>
+      <a aria-label="LinkedIn" class="hover:text-yellow-600 transition focus-visible:ring-2 focus-visible:ring-yellow-400 focus-visible:ring-offset-2 rounded p-1" href="#">
+       <i class="fab fa-linkedin-in">
+       </i>
+      </a>
+     </div>
+    </div>
+   </div>
+   <div class="mt-14 text-center text-gray-500 text-sm tracking-wide select-none">
+    © 2024 Innovación & Finanzas. Todos los derechos reservados.
+   </div>
+  </footer>
+  <script>
+   // Mobile menu toggle with aria-expanded update
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    menuBtn.addEventListener("click", () => {
+      const expanded = menuBtn.getAttribute("aria-expanded") === "true";
+      menuBtn.setAttribute("aria-expanded", !expanded);
+      mobileMenu.classList.toggle("hidden");
+    });
 
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const password = document.getElementById('password').value;
-            // Simulación de verificación de contraseña
-            const storedPassword = '123456'; // Esta debería ser la contraseña almacenada de manera segura
-            if (password === storedPassword) {
-                window.location.href = 'home.html'; // Redirigir al panel de usuario
-            } else {
-                document.getElementById('errorMessage').classList.remove('hidden');
-            }
-        });
-    </script>
-</body>
+    // Chatbot toggle
+    const chatbotBtn = document.getElementById("chatbot-btn");
+    const chatbot = document.getElementById("chatbot");
+    const chatbotClose = document.getElementById("chatbot-close");
+    const chatbotForm = document.getElementById("chatbot-form");
+    const chatbotMessages = document.getElementById("chatbot-messages");
+    const chatbotInput = document.getElementById("chatbot-input");
+
+    chatbotBtn.addEventListener("click", () => {
+      chatbot.classList.remove("hidden");
+      chatbot.setAttribute("aria-hidden", "false");
+      chatbotInput.focus();
+    });
+
+    chatbotClose.addEventListener("click", () => {
+      chatbot.classList.add("hidden");
+      chatbot.setAttribute("aria-hidden", "true");
+      chatbotBtn.focus();
+    });
+
+    chatbotForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const userMessage = chatbotInput.value.trim();
+      if (!userMessage) return;
+
+      // Append user message
+      const userMsgElem = document.createElement("p");
+      userMsgElem.className = "text-right text-yellow-600 font-semibold";
+      userMsgElem.textContent = userMessage;
+      chatbotMessages.appendChild(userMsgElem);
+
+      // Simulate IA response (placeholder)
+      const iaResponse = document.createElement("p");
+      iaResponse.className = "text-left text-gray-800";
+      iaResponse.textContent =
+        "Gracias por tu mensaje. Nuestro asistente IA está en desarrollo y pronto te ayudará con respuestas personalizadas.";
+      chatbotMessages.appendChild(iaResponse);
+
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      chatbotInput.value = "";
+      chatbotInput.focus();
+    });
+
+    // Login modal toggle
+    const loginBtn = document.getElementById("login-btn");
+    const loginModal = document.getElementById("login-modal");
+    const loginModalClose = document.getElementById("login-modal-close");
+    const loginForm = document.getElementById("login-form");
+    const loginEmail = document.getElementById("login-email");
+
+    loginBtn.addEventListener("click", () => {
+      loginModal.classList.remove("hidden");
+      loginModal.setAttribute("aria-hidden", "false");
+      loginEmail.focus();
+    });
+
+    loginModalClose.addEventListener("click", () => {
+      loginModal.classList.add("hidden");
+      loginModal.setAttribute("aria-hidden", "true");
+      loginBtn.focus();
+    });
+
+    // Close modal with Esc key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !loginModal.classList.contains("hidden")) {
+        loginModal.classList.add("hidden");
+        loginModal.setAttribute("aria-hidden", "true");
+        loginBtn.focus();
+      }
+    });
+  </script>
+ </body>
 </html>
